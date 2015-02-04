@@ -1,0 +1,17 @@
+head
+  title demo
+
+body
+  +famousContext id="mainCtx"
+    +HeaderFooterLayout headerSize=50
+      +Surface target="header" template="header"
+      +FlexLayoutController target="content" layout=layout
+        +famousEach surfaces
+          +Surface size="[100,100]" style=style
+            | #{_id}
+
+template(name="header")
+  p
+    select(id="layoutPicker")
+      each layouts
+        option(value=this,selected=isLayoutSelected) #{this}
