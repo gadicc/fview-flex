@@ -5,13 +5,22 @@ body
   +famousContext id="mainCtx"
     +HeaderFooterLayout headerSize=50
       +Surface target="header" template="header"
-      +FlexLayoutController target="content" layout=layout
-        +famousEach surfaces
-          +Surface size="[100,100]" style=style
-            | #{_id}
+      +ContainerSurface target="content" perspective=500
+        +FlexLayoutController layout=layout direction=direction layoutOptions=layoutOptions
+          +famousEach surfaces
+            +Surface style=style
+              | #{_id}
 
 template(name="header")
   p
     select(id="layoutPicker")
       each layouts
         option(value=this,selected=isLayoutSelected) #{this}
+    select(id="directionPicker")
+      each directions
+        option(value=value,selected=isDirectionSelected) #{key}
+    each layoutOptions
+      label
+        | #{this}:
+        input(name=this,class="picker",value=layoutOptionValue,size="5")
+      | &nbsp;

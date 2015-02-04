@@ -22,9 +22,11 @@ Package.onUse(function(api) {
     'LayoutController', 
     'ScrollController',
 
-    'layouts/ListLayout',
+    'layouts/GridLayout',
     'layouts/CollectionLayout',
-    'layouts/GridLayout'
+    'layouts/ListLayout',
+    'layouts/ProportionalLayout',
+    'layouts/WheelLayout'
   ];
 
   for (var i=0; i < modules.length; i++)
