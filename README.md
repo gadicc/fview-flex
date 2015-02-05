@@ -1,6 +1,6 @@
 # fview-flex
 
-Sp IjzerenHein's [famous-flex](https://github.com/IjzerenHein/famous-flex)
+So IjzerenHein's [famous-flex](https://github.com/IjzerenHein/famous-flex)
 is pretty friggin' awesome, and without a doubt the best community component for
 Famo.us by a substantial distance.  This is the start of a
 [famous-views](http://famous-views.meteor.com/) wrapper for it (for Meteor).
@@ -54,7 +54,7 @@ are a lot of `+1`'s.
   * [ ] NavBarLayout
   * [ ] TabBarLayout
   * *--- Scrollable ----*
-  * [ ] ListLayout (started, [ ] stickyHeaders)
+  * [x] ListLayout ([ ] stickyHeaders)
   * [x] CollectionLayout
   * [x] WheelLayout
 

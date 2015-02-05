@@ -9,23 +9,30 @@ var layoutOptions = {
 
 Session.setDefault('cells', [4,4]);
 Session.setDefault('margins', [10,10,10,10]);
-Session.setDefault('spacing', [10,10]);
 Session.setDefault('ratios', [1,2,3,1]);
-// Session.setDefault('itemSize', [90,90]);  // set in autorun below
 Session.setDefault('justify', [0,0]);
 Session.setDefault('diameter', 500);
 Session.setDefault('radialOpacity', 0);
+// set in autorun below
+// Session.setDefault('itemSize', [90,90]);
+// Session.setDefault('spacing', [10,10]);
 
 // Switch between scalar/array for itemSize when necessary w/ history
 var itemSizeOld = [ [90,90], 70 ];
+var spacingOld = [ [10,10], 2 ];
 Tracker.autorun(function(c) {
   var type = Session.equals('layout', 'WheelLayout')
     || Session.equals('layout', 'ListLayout') ? 1 : 0;
-  if (!c.firstRun)
+  if (!c.firstRun) {
     itemSizeOld[type?0:1] = Tracker.nonreactive(function() {
       return Session.get('itemSize');
     });
+    spacingOld[type?0:1] = Tracker.nonreactive(function() {
+      return Session.get('spacing');
+    });
+  }
   Session.set('itemSize', itemSizeOld[type]);
+  Session.set('spacing', spacingOld[type]);
 });
 
 Surfaces = new Meteor.Collection(null);
