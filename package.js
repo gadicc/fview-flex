@@ -9,11 +9,13 @@ Package.onUse(function(api) {
   api.versionsFrom('1.0.3.1');
   api.use('gadicohen:famous-views@0.1.32', 'client');
 
+  // custom require/define funcs
   api.addFiles('lib/pre.js', 'client');
 
+  // ALWAYS copy this exactly into pre.js on update.  for now.
   var modules = [
-    'LayoutContext',
     'LayoutUtility',
+    'LayoutContext',
     'LayoutNode',
     'FlowLayoutNode',
     'helpers/LayoutDockHelper',
@@ -26,7 +28,9 @@ Package.onUse(function(api) {
     'layouts/CollectionLayout',
     'layouts/ListLayout',
     'layouts/ProportionalLayout',
-    'layouts/WheelLayout'
+    'layouts/WheelLayout',
+
+    'FlexScrollView'
   ];
 
   for (var i=0; i < modules.length; i++)
@@ -34,7 +38,7 @@ Package.onUse(function(api) {
 
   // famous-views wrappers for famous-flex
   api.addFiles([
-    'lib/LayoutController.js'
+    'lib/FlexScrollView.js'
   ], 'client');
 
   api.export('Flex', 'client');

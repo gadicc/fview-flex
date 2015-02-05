@@ -3,24 +3,43 @@ head
 
 body
   +famousContext id="mainCtx"
-    +HeaderFooterLayout headerSize=50
+    +HeaderFooterLayout headerSize=120
       +Surface target="header" template="header"
-      +ContainerSurface target="content" perspective=500
-        +FlexLayoutController layout=layout direction=direction layoutOptions=layoutOptions
+      +ContainerSurface target="content" perspective=500 overflow="hidden"
+        +FlexScrollView layout=layout direction=direction layoutOptions=layoutOptions
           +famousEach surfaces
             +Surface style=style
-              | #{_id}
+              | #{name}
 
 template(name="header")
-  p
+  div.hb
+    b Collection:
+    button(class="surfaceAction",data-action="remove") -
+    | #{surfaceCount}
+    button(class="surfaceAction",data-action="add") +
+    | (random) &nbsp;
+    select(id="orderPicker")
+      option(value="1") Ascending
+      option(value="-1",selected=isOrderDescending) Descending
+  div.hb
+    b Template:
+    | {{dstache}}#FlexScrollView layout="
     select(id="layoutPicker")
       each layouts
         option(value=this,selected=isLayoutSelected) #{this}
+    | " direction="
     select(id="directionPicker")
       each directions
         option(value=value,selected=isDirectionSelected) #{key}
+    | "
     each layoutOptions
       label
-        | #{this}:
+        |  &nbsp; #{this}="
         input(name=this,class="picker",value=layoutOptionValue,size="5")
-      | &nbsp;
+      | "
+    | }}
+  div.hb
+    b GitHub:
+    a(href="http://github.com/gadicc/fview-flex/") Project
+    | |
+    a(href="http://github.com/gadicc/fview-flex/tree/master/demo") Demo Source

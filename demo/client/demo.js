@@ -11,17 +11,21 @@ Session.setDefault('cells', [4,4]);
 Session.setDefault('margins', [10,10,10,10]);
 Session.setDefault('spacing', [10,10]);
 Session.setDefault('ratios', [1,2,3,1]);
-Session.setDefault('itemSize', [90,90]);  // wheel takes "70"
+// Session.setDefault('itemSize', [90,90]);  // set in autorun below
 Session.setDefault('justify', [0,0]);
 Session.setDefault('diameter', 500);
 Session.setDefault('radialOpacity', 0);
 
-Tracker.autorun(function() {
-  // TODO, store and restore old value
-  if (Session.equals('layout', 'WheelLayout'))
-    Session.set('itemSize', 70);
-  else
-    Session.set('itemSize', [90,90]);
+// Switch between scalar/array for itemSize when necessary w/ history
+var itemSizeOld = [ [90,90], 70 ];
+Tracker.autorun(function(c) {
+  var type = Session.equals('layout', 'WheelLayout')
+    || Session.equals('layout', 'ListLayout') ? 1 : 0;
+  if (!c.firstRun)
+    itemSizeOld[type?0:1] = Tracker.nonreactive(function() {
+      return Session.get('itemSize');
+    });
+  Session.set('itemSize', itemSizeOld[type]);
 });
 
 Surfaces = new Meteor.Collection(null);
@@ -29,12 +33,18 @@ Surfaces = new Meteor.Collection(null);
 Meteor.startup(function() {
   for (var i=1; i < 31; i++)
     Surfaces.insert({
-      _id: 's'+i,
-      style: "background: hsl(" + (i * 360 / 30) + ", 100%, 50%)"
+      name: '#'+i,
+      index: i,
+      style: "background: hsl(" + (i * 360 / 30) + ", 100%, 50%)",
+      show: Math.random() < 0.5
     });
 });
 
 //var getSession = function(sessionVar) { return Session.get('direction') }
+
+Template.registerHelper('dstache', function() {
+  return '{{';
+});
 
 Template.body.helpers({
   layout: function() {
@@ -54,24 +64,40 @@ Template.body.helpers({
   },
 
   surfaces: function() {
-    return Surfaces.find();
+    return Surfaces.find({ show: true },
+      { sort: { index: Session.get('order') } } );
   }
 });
 
 Session.setDefault('direction', 0);
 Session.setDefault('layout', 'CollectionLayout');
+Session.setDefault('order', 1);
 
 Template.body.events({
+  'click .surfaceAction': function(event) {
+    var add = event.currentTarget.getAttribute('data-action') === 'add';
+    var sids = _.pluck(Surfaces.find({show:!add}, {fields:{_id:1}}).fetch(), '_id');
+    var id = sids[Math.floor((Math.random()-0.001) * sids.length)];
+    Surfaces.update(id, { $set: { show: add }});
+  },
   'change #layoutPicker': function(event) {
     Session.set('layout', event.currentTarget.value);
   },
   'change #directionPicker': function(event) {
     Session.set('direction', parseInt(event.currentTarget.value));
+  },
+  'change #orderPicker': function(event) {
+    Session.set('order', parseInt(event.currentTarget.value));
   }
 });
 
 Template.header.helpers({
+  surfaceCount: function() {
+    return Surfaces.find({show:true}).count();
+  },
+
   layouts: _.keys(layoutOptions),
+
   directions: (function() {
     var out = [];
     for (key in famous.utilities.Utility.Direction)
@@ -92,6 +118,9 @@ Template.header.helpers({
   },
   isDirectionSelected: function() {
     return Session.equals('direction', this.value);
+  },
+  isOrderDescending: function() {
+    return Session.equals('order', -1);
   }
 
 });
