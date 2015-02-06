@@ -18,7 +18,7 @@ Session.setDefault('radialOpacity', 0);
 // Session.setDefault('spacing', [10,10]);
 
 // Switch between scalar/array for itemSize when necessary w/ history
-var itemSizeOld = [ [90,90], 70 ];
+var itemSizeOld = [ [150,150], 70 ];
 var spacingOld = [ [10,10], 2 ];
 Tracker.autorun(function(c) {
   var type = Session.equals('layout', 'WheelLayout')
@@ -38,12 +38,12 @@ Tracker.autorun(function(c) {
 Surfaces = new Meteor.Collection(null);
 
 Meteor.startup(function() {
-  for (var i=1; i < 31; i++)
+  for (var i=0; i < 60; i++)
     Surfaces.insert({
-      name: '#'+i,
+      name: '#'+(i+1),
       index: i,
-      style: "background: hsl(" + (i * 360 / 30) + ", 100%, 50%)",
-      show: Math.random() < 0.5
+      style: "background: hsl(" + (i * 360 / 60) + ", 100%, 50%)",
+      show: Math.random() < 0.4
     });
 });
 
