@@ -31,13 +31,13 @@ template(name="header")
     select(id="directionPicker")
       each directions
         option(value=value,selected=isDirectionSelected) #{key}
-    | " layoutOptions="{
+    | " layoutOptions='{
     each layoutOptions
       label
         |  &nbsp; "#{this}": "
         input(name=this,class="picker",value=layoutOptionValue,size="5")
       | "
-    | "} }}
+    | }' }}
   div.hb
     b GitHub:
     a(href="http://github.com/gadicc/fview-flex/") Project
