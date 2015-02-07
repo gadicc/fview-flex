@@ -6,8 +6,8 @@ Famo.us by a substantial distance.  This is the start of a
 [famous-views](http://famous-views.meteor.com/) wrapper for it (for Meteor).
 
 **VERY EARLY RELEASE!!!  Feel free to play around but don't use this for
-anything serious.**  Currently this only works for `mjn:famous`, support
-for `raix:famono` coming soon.
+anything serious.**  Works with both `mjn:famous` and  `raix:famono` (since
+v0.0.2).
 
 [Live demo](http://fview-flex.meteor.com/)
 
