@@ -8,7 +8,9 @@ meteor-platform
 autopublish
 insecure
 
-mjn:famous
+#mjn:famous
+raix:famono
+
 gadicohen:famous-views
 gadicohen:fview-flex
 

@@ -1,3 +1,9 @@
+FView.ready(function() {
+  // Famono: load famo.us shims and CSS
+  famous.polyfills;
+  famous.core.famous; // CSS
+});
+
 var layoutOptions = {
   GridLayout: [ 'cells', 'margins', 'spacing' ],
   ProportionalLayout: [ 'ratios' ],

@@ -14,3 +14,12 @@ input.picker {
 .hb:nth-child(1) { background: #8aa }
 .hb:nth-child(2) { background: #a8a }
 .hb:nth-child(3) { background: #aa8 }
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
