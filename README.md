@@ -21,6 +21,8 @@ v0.0.2).
           | #{_id}
 ```
 
+Note: [Beware of overflow: hidden, it breaks z-translation quite badly](https://github.com/Famous/famous/issues/493) - if you don't need it, don't use it.
+
 **Attributes**:
 
 * All attributes are parsed using famous-views and given on init (i.e. you can give either a string or [fview string](http://famous-views.meteor.com/views/README) in the template, or use a template helper to give an actual value).  So you can use any option mentioned
@@ -36,6 +38,14 @@ directly from the template, e.g.
 
 You can also use `{{#FlexLayoutController}}` directly if you don't need
 scrolling.
+
+## Special behaviour
+
+* If the FlexScrollView's immediate parent is a ContainerSurface, we'll set up
+all the event piping for you.  Otherwise, by default, we'll still automatically
+pipe all children to it, just like in regular ScrollView with famousEach.  But
+generally you'll want to use a ContainerSurface to ensure smooth scrolling even
+when going over "gaps" between the Surfaces.
 
 ## Progress
 
