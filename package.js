@@ -24,8 +24,8 @@ Package.onUse(function(api) {
     'LayoutController', 
     'ScrollController',
 
-    'layouts/GridLayout',
     'layouts/CollectionLayout',
+    'layouts/GridLayout',
     'layouts/ListLayout',
     'layouts/ProportionalLayout',
     'layouts/WheelLayout',
