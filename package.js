@@ -30,6 +30,8 @@ Package.onUse(function(api) {
     'layouts/ProportionalLayout',
     'layouts/WheelLayout',
 
+    'views/RefreshLoader'
+
     'FlexScrollView'
   ];
 
