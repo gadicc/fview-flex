@@ -31,6 +31,7 @@ Package.onUse(function(api) {
     'layouts/WheelLayout',
 
     'views/RefreshLoader',
+    'views/AutosizeTextareaSurface',
 
     'FlexScrollView'
   ];
