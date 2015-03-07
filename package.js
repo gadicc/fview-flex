@@ -29,6 +29,7 @@ Package.onUse(function(api) {
     'layouts/ListLayout',
     'layouts/ProportionalLayout',
     'layouts/WheelLayout',
+    'layouts/HeaderFooterLayout',
 
     'views/RefreshLoader',
     'views/AutosizeTextareaSurface',
