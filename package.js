@@ -23,18 +23,31 @@ Package.onUse(function(api) {
     'LayoutNodeManager',
     'LayoutController', 
     'ScrollController',
+    'VirtualViewSequence',
 
     'layouts/CollectionLayout',
     'layouts/GridLayout',
     'layouts/ListLayout',
     'layouts/ProportionalLayout',
     'layouts/WheelLayout',
+    'layouts/HeaderFooterLayout',
+    'layouts/TabBarLayout',
+
+    'widgets/DatePickerComponents',
+    'widgets/DatePicker',
+    'widgets/TabBar',
+
+    'views/RefreshLoader',
+    'views/AutosizeTextareaSurface',
 
     'FlexScrollView'
   ];
 
   for (var i=0; i < modules.length; i++)
     api.addFiles('lib/famous-flex/src/' + modules[i] + '.js', 'client');
+
+  // add the css files
+  api.addFiles('lib/famous-flex/src/widgets/styles.css', 'client');
 
   // famous-views wrappers for famous-flex
   api.addFiles([
