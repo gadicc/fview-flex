@@ -1,11 +1,15 @@
 ## vNEXT
 
 ## v0.0.5
+
 * add HeaderFooterLayout
 * add LayoutDockHelper
 * add DatePicker & TabBar
 * add useful views RefreshLoader & AutosizeTextareaSurface
 * bugfixes
+
+A massive thanks to @ShawnOceanHu for his work on *all of the above*, including
+sample code in the README.
 
 ## v0.0.4
 

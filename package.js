@@ -1,6 +1,6 @@
 Package.describe({
   name: 'gadicohen:fview-flex',
-  version: '0.0.4',
+  version: '0.0.5',
   summary: 'IjzerenHein\'s famous-flex for famous-views',
   git: 'https://github.com/gadicc/fview-flex.git'
 });
