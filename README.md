@@ -71,11 +71,11 @@ Basically you can use all the components of famous-flex right now, through js if
   * [x] WheelLayout
 
 * **LayoutHelpers(layout literals)**
-  * [] LayoutDockHelper (add template support for dock literals)
+  * [ ] LayoutDockHelper (add template support for dock literals)
 
 * **Widgets**
-  * [] DatePicker (add template support)
-  * [] TabBar (add template support)
+  * [ ] DatePicker (add template support)
+  * [ ] TabBar (add template support)
 
 * **LayoutControllers**, **LayoutHelpers**, etc.
 
