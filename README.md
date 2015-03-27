@@ -56,20 +56,120 @@ list below implemented, however, I'll definitely prioritize according to demand.
 prioritization requests, and I'll try get to these first, especially if there
 are a lot of `+1`'s.
 
+Basically you can use all the components of famous-flex right now, through js if not available for templates.
+
 * **Standard Layouts** ([full docs](https://github.com/IjzerenHein/famous-flex#standard-layouts))
   * *--- Non-scrollable ---*
   * [x] GridLayout
   * [x] ProportionalLayout
-  * [ ] HeaderFooterLayout (TODO, see what's different vs famo.us' one)
-  * [ ] NavBarLayout
-  * [ ] TabBarLayout
+  * [x] HeaderFooterLayout (compared to famo.us' HeaderFooterLayout, this could update the header/footer size dynamically)
+  * [x] NavBarLayout
+  * [x] TabBarLayout
   * *--- Scrollable ----*
-  * [x] ListLayout ([ ] stickyHeaders)
+  * [x] ListLayout ([x] stickyHeaders)
   * [x] CollectionLayout
   * [x] WheelLayout
 
+* **LayoutHelpers(layout literals)**
+  * [] LayoutDockHelper (add template support for dock literals)
+
 * **Widgets**
-  * [ ] DatePicker
-  * [ ] TabBar
+  * [] DatePicker (add template support)
+  * [] TabBar (add template support)
 
 * **LayoutControllers**, **LayoutHelpers**, etc.
+
+A DatePicker example(will add template support in the future :):
+```
+  var datePicker = new Flex.DatePicker({
+    date: new Date(),
+    perspective: 500,
+    wheelLayout: {
+      itemSize: 25,
+      diameter: 100,
+      radialOpacity: -0.5
+    },
+    createRenderables: {
+      top: true,
+      bottom: true
+    },
+    classes: ['transparent']
+  });
+  datePicker.setComponents([
+    new Flex.DatePicker.Component.Month(),
+    new Flex.DatePicker.Component.Day(),
+    new Flex.DatePicker.Component.Year()
+  ]);
+
+  datePicker.on('datechange', function(event) {
+    console.log('date-changed to: ' + event.date.toString());
+  });
+```
+
+A HeaderFooterLayout example:
+```
+{{#FlexLayoutController layout='HeaderFooterLayout' layoutOptions=layoutOptions}}
+  {{#Surface target="header" size="[undefined, 40]"}}
+  {{/Surface}}
+  {{#Surface target="content"}}
+  {{/Surface}}
+  {{#Surface target="footer" size="[undefined, 80]"}}
+  {{/Surface}}
+{{/FlexLayoutController}}
+```
+
+A LayoutDockHelper example:
+```
+The template:
+
+<template name="dockExample">
+{{#FlexLayoutController layout=layout dataSource=dataSource layoutOptions=layoutOptions}}
+{{/FlexLayoutController}}
+</template>
+
+In JS:
+
+Template.dockExample.helpers({
+  'layout': function() {
+    return {
+      dock: [
+        ['fill', 'background'],
+        ['left', undefined, 8],
+        ['top', undefined, 8],
+        ['right', undefined, 8],
+        ['bottom', undefined, 8],
+        ['right', 'send', undefined, 1],
+        ['fill', 'input', 1]
+      ]
+    };
+  },
+  'dataSource': function() {
+    return {
+      background: backgroundSurface,
+      input: inputSurface,
+      send:  sendSurface
+    };
+  },
+  'layoutOptions': function() {
+    return {
+      margins: [0, 0, 0, 0]
+    };
+  }
+});
+```
+I think future release can add support for layout literals(and other common layouts) like this:
+```
+{{#FlexLayoutController layout='HeaderFooterLayout/ListLayout/Dock/or whatever layout' margin="[10, 10, 10, 10]"}}
+  {{#Surface target="left" size="[undefined, 100]"}}
+    {{>templateA}}
+  {{/Surface}}
+  {{#Surface target="right" size="[undefined, 100]"}}
+    {{>templateB}}
+  {{/Surface}}
+{{/FlexLayoutController}}
+```
+
+BTW, you can use RefreshLoader & AutosizeTextareaSurface like this:
+```
+var loader = new Flex.RefreshLoader(...);
+```

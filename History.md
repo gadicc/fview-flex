@@ -1,5 +1,12 @@
 ## vNEXT
 
+## v0.0.5
+* add HeaderFooterLayout
+* add LayoutDockHelper
+* add DatePicker & TabBar
+* add useful views RefreshLoader & AutosizeTextareaSurface
+* bugfixes
+
 ## v0.0.4
 
 * Bugfix: don't pipe events from parent ContainerSurface AND child surfaces,
