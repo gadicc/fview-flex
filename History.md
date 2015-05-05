@@ -1,5 +1,9 @@
 ## vNEXT
 
+## v0.0.6
+
+* Fix for AutosizeTextareaSurface.prototype error (deps)
+
 ## v0.0.5
 
 * add HeaderFooterLayout

@@ -1,12 +1,16 @@
 Package.describe({
   name: 'gadicohen:fview-flex',
-  version: '0.0.5',
+  version: '0.0.6',
   summary: 'IjzerenHein\'s famous-flex for famous-views',
   git: 'https://github.com/gadicc/fview-flex.git'
 });
 
 Package.onUse(function(api) {
   // api.versionsFrom('1.0.3.1');
+
+  api.use('mjn:famous@0.3.5', 'client', { weak: true });
+  api.use('raix:famono@0.9.27', 'client', { weak: true });
+
   api.use('gadicohen:famous-views@0.1.32', 'client');
 
   // custom require/define funcs
