@@ -1,0 +1,42 @@
+template(name="FlexScrollViewDemo")
+  +HeaderFooterLayout headerSize=120
+    +Surface target="header" template="fsvHeader"
+    +ContainerSurface target="content" perspective=500 overflow="hidden"
+      +FlexScrollView layout=layout direction=direction layoutOptions=layoutOptions
+        +famousEach surfaces
+          +Surface style=style class="noselect"
+            | #{name}
+
+template(name="fsvHeader")
+  div.hb
+    b Collection:
+    button(class="surfaceAction",data-action="remove") -
+    | #{surfaceCount}
+    button(class="surfaceAction",data-action="add") +
+    | (random) &nbsp;
+    select(id="orderPicker")
+      option(value="1") Ascending
+      option(value="-1",selected=isOrderDescending) Descending
+  div.hb
+    b Template:
+    | {{dstache}}#FlexScrollView layout="
+    select(id="layoutPicker")
+      each layouts
+        option(value=this,selected=isLayoutSelected) #{this}
+    | " direction="
+    select(id="directionPicker")
+      each directions
+        option(value=value,selected=isDirectionSelected) #{key}
+    | " layoutOptions='{
+    each layoutOptions
+      label
+        |  &nbsp; "#{this}": "
+        input(name=this,class="picker",value=layoutOptionValue,size="5")
+      | "
+    | }' }}
+  div.hb
+    b GitHub:
+    a(href="http://github.com/gadicc/fview-flex/") Project
+    | |
+    a(href="http://github.com/gadicc/fview-flex/tree/master/demo") Demo Source
+    | ; note: obviously all attributes above are reactive!

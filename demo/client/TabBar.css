@@ -1,0 +1,72 @@
+/* 
+ * src: https://github.com/IjzerenHein/famous-flex-tabbar/blob/master/src/styles.css
+ */
+
+.ff-tabbar.item.small {
+  font-size: 12px;
+}
+.ff-tabbar.item .icon {
+  font-size: 24px;
+}
+
+
+/* tabbar white */
+.ff-tabbar.background.white {
+  background-color: #ECECEC;
+}
+.ff-tabbar.item.white {
+  color: #333333;
+}
+.ff-tabbar.selectedItemOverlay.white {
+  border-bottom: 4px solid #1185c3;
+}
+
+
+/* tabbar black */
+.ff-tabbar.background.black {
+  background-color: #101010;
+}
+.ff-tabbar.item.black {
+  color: #f7f3f7;
+}
+.ff-tabbar.selectedItemOverlay.black {
+  border-bottom: 6px solid #30b6e7;
+}
+.ff-tabbar.spacer.black:after {
+  content: "";
+  background-color: #333333;
+  width: 100%;
+  top: 10px;
+  bottom: 10px;
+  position: absolute;
+}
+
+/* tabbar blue */
+.ff-tabbar.background.blue {
+  background-color: #f5f5f5;
+}
+.ff-tabbar.item.blue {
+  color: #818181;
+}
+.ff-tabbar.item.blue.selected {
+  color: #1185c3; 
+}
+.ff-tabbar.selectedItemOverlay.blue {
+  border-bottom: 6px solid #1185c3;
+}
+
+
+/* tabbar orange */
+.ff-tabbar.background.orange {
+  background-color: #f5f5f5;
+}
+.ff-tabbar.item.orange {
+  color: #818181;
+}
+.ff-tabbar.item.orange.selected {
+  color: #f5f5f5;
+  background-color: #E14610;
+}
+.ff-tabbar.selectedItemOverlay.orange {
+  border-bottom: none;
+}

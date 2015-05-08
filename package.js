@@ -7,6 +7,7 @@ Package.describe({
 
 Package.onUse(function(api) {
   // api.versionsFrom('1.0.3.1');
+  api.use('reactive-dict@1.0.4', 'client');
 
   api.use('mjn:famous@0.3.5', 'client', { weak: true });
   api.use('raix:famono@0.9.27', 'client', { weak: true });
@@ -55,7 +56,8 @@ Package.onUse(function(api) {
 
   // famous-views wrappers for famous-flex
   api.addFiles([
-    'lib/FlexScrollView.js'
+    'lib/FlexScrollView.js',
+    'lib/TabBar.js'
   ], 'client');
 
   api.export('Flex', 'client');

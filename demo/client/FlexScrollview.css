@@ -1,0 +1,16 @@
+input.picker {
+  text-align: center;
+}
+
+.previewCS {
+  border: 1px solid black;
+  overflow: hidden;
+  margin: 5px;
+}
+
+.hb {
+  padding: 2px;
+}
+.hb:nth-child(1) { background: #88a }
+.hb:nth-child(2) { background: #a8a }
+.hb:nth-child(3) { background: #aa8 }
