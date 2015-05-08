@@ -18,37 +18,37 @@ Package.onUse(function(api) {
 
   // ALWAYS copy this exactly into pre.js on update.  for now.
   var modules = [
-    'LayoutUtility',
-    'LayoutContext',
-    'LayoutNode',
-    'FlowLayoutNode',
-    'helpers/LayoutDockHelper',
+    'famous-flex/src/LayoutUtility',
+    'famous-flex/src/LayoutContext',
+    'famous-flex/src/LayoutNode',
+    'famous-flex/src/FlowLayoutNode',
+    'famous-flex/src/helpers/LayoutDockHelper',
 
-    'LayoutNodeManager',
-    'LayoutController', 
-    'ScrollController',
-    'VirtualViewSequence',
+    'famous-flex/src/LayoutNodeManager',
+    'famous-flex/src/LayoutController', 
+    'famous-flex/src/ScrollController',
+    'famous-flex/src/VirtualViewSequence',
 
-    'layouts/CollectionLayout',
-    'layouts/GridLayout',
-    'layouts/ListLayout',
-    'layouts/ProportionalLayout',
-    'layouts/WheelLayout',
-    'layouts/HeaderFooterLayout',
-    'layouts/TabBarLayout',
+    'famous-flex/src/layouts/CollectionLayout',
+    'famous-flex/src/layouts/GridLayout',
+    'famous-flex/src/layouts/ListLayout',
+    'famous-flex/src/layouts/ProportionalLayout',
+    'famous-flex/src/layouts/WheelLayout',
+    'famous-flex/src/layouts/HeaderFooterLayout',
+    'famous-flex/src/layouts/TabBarLayout',
 
-    'widgets/DatePickerComponents',
-    'widgets/DatePicker',
-    'widgets/TabBar',
+    'famous-flex/src/widgets/DatePickerComponents',
+    'famous-flex/src/widgets/DatePicker',
+    'famous-flex/src/widgets/TabBar',
 
-    'views/RefreshLoader',
-    'views/AutosizeTextareaSurface',
+    'famous-refresh-loader/RefreshLoader',
+    'famous-autosizetextarea/AutosizeTextareaSurface',
 
-    'FlexScrollView'
+    'famous-flex/src/FlexScrollView'
   ];
 
   for (var i=0; i < modules.length; i++)
-    api.addFiles('lib/famous-flex/src/' + modules[i] + '.js', 'client');
+    api.addFiles('lib/' + modules[i] + '.js', 'client');
 
   // add the css files
   api.addFiles('lib/famous-flex/src/widgets/styles.css', 'client');
