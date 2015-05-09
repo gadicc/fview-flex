@@ -4,13 +4,15 @@ FView.ready(function() {
   famous.core.famous; // CSS
 });
 
+/*
 Router.configure({
   layoutTemplate: 'layout'
 });
 
-Router.route('/', function() {
+Router.route('/', {function() {
   this.redirect('FlexScrollView');
 });
+*/
 
 //var getSession = function(sessionVar) { return Session.get('direction') }
 
@@ -18,11 +20,16 @@ Template.registerHelper('dstache', function() {
   return '{{';
 });
 
-Template.layout.helpers({
+Template.body.helpers({
+  showId: function() {
+    return Session.get('currentRouteName');
+  },
   layoutController: {
-    nodeSpring: {
-      dampingRatio: 0.05,
-      period: 400
+    flowOptions: {
+      spring: {
+        dampingRatio: 0.2,
+        period: 500
+      }
     }
   },
   createRenderables: {
@@ -37,7 +44,7 @@ Template.TabBarInitHack.onRendered(function() {
 
   this.autorun(function() {
     var tabId = fview.index();
-    if (tabId && tabId !== Router.current().route.getName())
-      Router.go(tabId);
+    if (tabId && tabId !== Session.get('currentRouteName'))
+      FlowRouter.go(tabId);
   });
 });

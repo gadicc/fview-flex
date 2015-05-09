@@ -1,15 +1,16 @@
 head
   title demo
 
-template(name="layout")
+body
   +famousContext id="mainCtx"
     +HeaderFooterLayout headerSize=45
       +TabBar target="header" class="black" createRenderables=createRenderables layoutController=layoutController
         +tabHeader tabId="FlexScrollViewDemo" text="FlexScrollView"
         +tabHeader tabId="TabBarDemo" text="TabBar"
         +TabBarInitHack
-      +RenderController target="content"
-        +yield
+      +RenderController target="content" prerender=true showId=showId
+        +FlexScrollViewDemo
+        +TabBarDemo
 
 template(name="TabBarInitHack")
 
