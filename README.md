@@ -11,6 +11,9 @@ v0.0.2).
 
 [Live demo](http://fview-flex.meteor.com/)
 
+Too add to your project, just `meteor add gadicohen:fview-flex`.  To clone from
+github, see **Development** below (in short, make sure to submodule init/update).
+
 ## Usage:
 
 ```jade
@@ -173,3 +176,30 @@ BTW, you can use RefreshLoader & AutosizeTextareaSurface like this:
 ```
 var loader = new Flex.RefreshLoader(...);
 ```
+
+## Development
+
+If you plan to contribute, you probably want to clone your own fork.
+See https://help.github.com/articles/using-pull-requests/ for more details.
+
+```bash
+$ git clone https://github.com/gadicc/fview-flex.git
+$ cd fview-flex
+$ git submodule init
+$ git submodule update
+```
+
+The last two lines are necessary because we don't include all the original
+fmaous-flex etc code in the repo, rather, we include them as submodules and
+can update / checkout a particular commit whenever we want.  If you don't
+you'll see errors like:
+
+```bash
+=> Errors while initializing project:
+
+While building package gadicohen:fview-flex:
+error: File not found: lib/famous-flex/src/LayoutUtility.js
+error: File not found: lib/famous-flex/src/LayoutContext.js
+```
+
+etc.
