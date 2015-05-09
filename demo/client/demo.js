@@ -4,15 +4,11 @@ FView.ready(function() {
   famous.core.famous; // CSS
 });
 
-/*
-Router.configure({
-  layoutTemplate: 'layout'
-});
-
-Router.route('/', {function() {
-  this.redirect('FlexScrollView');
-});
-*/
+FlowRouter.route('/', {
+  action: function() {
+    FlowRouter.go('/FlexScrollView');
+  }
+})
 
 //var getSession = function(sessionVar) { return Session.get('direction') }
 

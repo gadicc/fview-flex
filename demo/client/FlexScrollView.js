@@ -80,7 +80,10 @@ Session.setDefault('direction', 0);
 Session.setDefault('layout', 'CollectionLayout');
 Session.setDefault('order', 1);
 
-Template.FlexScrollViewDemo.events({
+Template.fsvHeader.events({
+  'change input.picker': function(event) {
+    Session.set(this.valueOf(), JSON.parse(event.currentTarget.value));
+  },
   'click .surfaceAction': function(event) {
     var add = event.currentTarget.getAttribute('data-action') === 'add';
     var sids = _.pluck(Surfaces.find({show:!add}, {fields:{_id:1}}).fetch(), '_id');
@@ -128,12 +131,5 @@ Template.fsvHeader.helpers({
   },
   isOrderDescending: function() {
     return Session.equals('order', -1);
-  }
-
-});
-
-Template.fsvHeader.events({
-  'change input.picker': function(event) {
-    Session.set(this.valueOf(), JSON.parse(event.currentTarget.value));
   }
 });
