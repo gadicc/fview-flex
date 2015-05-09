@@ -1,5 +1,12 @@
 ## vNEXT
 
+## v0.0.7
+
+* Update to latest famous-flex, famous-autosizetextarea, famous-refresh-loader
+* Famous-views wrapper for TabBar
+* Extra Flex modules: LayoutNodeManager, LayoutController,
+  AnimationController, TabBarController
+
 ## v0.0.6
 
 * Fix for AutosizeTextareaSurface.prototype error (deps)

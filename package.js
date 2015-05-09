@@ -1,6 +1,6 @@
 Package.describe({
   name: 'gadicohen:fview-flex',
-  version: '0.0.6',
+  version: '0.0.7',
   summary: 'IjzerenHein\'s famous-flex for famous-views',
   git: 'https://github.com/gadicc/fview-flex.git'
 });
@@ -22,8 +22,11 @@ Package.onUse(function(api) {
     'famous-flex/src/LayoutUtility',
     'famous-flex/src/LayoutContext',
     'famous-flex/src/LayoutNode',
+    'famous-flex/src/LayoutNodeManager',
     'famous-flex/src/FlowLayoutNode',
     'famous-flex/src/helpers/LayoutDockHelper',
+    'famous-flex/src/LayoutController',
+    'famous-flex/src/AnimationController',
 
     'famous-flex/src/LayoutNodeManager',
     'famous-flex/src/LayoutController', 
@@ -41,6 +44,7 @@ Package.onUse(function(api) {
     'famous-flex/src/widgets/DatePickerComponents',
     'famous-flex/src/widgets/DatePicker',
     'famous-flex/src/widgets/TabBar',
+    'famous-flex/src/widgets/TabBarController',
 
     'famous-refresh-loader/RefreshLoader',
     'famous-autosizetextarea/AutosizeTextareaSurface',
