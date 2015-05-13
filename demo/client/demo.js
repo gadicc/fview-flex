@@ -18,7 +18,7 @@ Template.registerHelper('dstache', function() {
 
 Template.body.helpers({
   showId: function() {
-    return Session.get('currentRouteName');
+    return FlowRouter.getRouteName();
   },
   layoutController: {
     flowOptions: {
@@ -39,8 +39,8 @@ Template.TabBarInitHack.onRendered(function() {
   var fview = FView.from(this);
 
   this.autorun(function() {
-    var tabId = fview.index();
-    if (tabId && tabId !== Session.get('currentRouteName'))
+    var tabId = fview.index(); // only reactive dep
+    if (tabId && tabId !== FlowRouter.current().route.name /* non-reactive */)
       FlowRouter.go(tabId);
   });
 });

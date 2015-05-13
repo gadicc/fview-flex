@@ -1,7 +1,5 @@
-FlowRouter.route('/FlexScrollView', {
-  name: 'FlexScrollViewDemo',
-  action: function() { Session.set('currentRouteName', this.name); }
-});
+FlowRouter.route('/FlexScrollView', { name: 'FlexScrollViewDemo' } );
+
 // TODO, make session vars template state vars?
 
 var layoutOptions = {
