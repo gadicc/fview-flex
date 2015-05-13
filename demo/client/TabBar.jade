@@ -1,3 +1,81 @@
 template(name="TabBarDemo")
-  +Surface id="TabBarDemo"
-    | howzit2
+  +Surface id="TabBarDemo" class="padded"
+    +markdown
+      | # TabBar
+      | ## Famous-Views Wrapper
+      | Here's a full example, combining a `RenderController`, which probably covers
+      | most use cases:
+    +snippet lang="spacebars"
+      | &lt;template name="tabBarDemo">
+      |   {{dstache}}SequentialLayout}}
+      |     {{dstache}}#TabBar selectedTab=fromRouteParam  _onRender="tabBarRender" createRenderables=createRenderables layoutController=layoutController}}
+      |       {{dstache}}>tabHeader tabId="surface1" text="Surface 1"}}
+      |       {{dstache}}>tabHeader tabId="surface2" text="Surface 2"}}
+      |     {{dstache}}/TabBar}}
+      |     {{dstache}}#RenderController prerender=true showId=fromRouteParam}}
+      |       {{dstache}}>Surface id="tab1" template="surface1"}}
+      |       {{dstache}}>Surface id="tab2" template="surface1"}}
+      |     {{dstache}}/RenderController}}
+      |    {{dstache}}/SequentialLayout}}
+      | &lt;/template>
+      | 
+      | &lt;template name="tabHeader">
+      |   {{dstache}}#Surface tabId=tabId class="ff-widget ff-tabbar images item black tabHeader"}}
+      |     {{dstache}}text}}
+      |   {{dstache}}/Surface}}
+      | &lt;/template>
+    else
+      if currentLang "jade"
+        | template(name="tabBarDemo")
+        |   +SequentialLayout
+        |     +TabBar selectedTab=fromRouteParam  _onRender="tabBarRender" class="black" createRenderables=createRenderables layoutController=layoutController
+        |       +tabHeader tabId="tab1" text="Tab 1"
+        |       +tabHeader tabId="tab2" text="Tab 2"
+        |     +RenderController prerender=true showId=fromRouteParam
+        |       +Surface id="tab1" text="Tab 1"
+        |       +Surface id="tab2" text="Tab 2"
+        | 
+        | template(name="tabHeader")
+        |   +Surface tabId=tabId class="ff-widget ff-tabbar images item black tabHeader"
+        |     | &num;{text}
+    +snippet lang="javascript"
+      | Template.tabBarDemo.helpers({
+      |   fromRouteParam: function() {
+      |     return FlowRouter.getParam('tabId');
+      |   },
+      |   layoutController: {
+      |    flowOptions: {
+      |       spring: {
+      |         dampingRatio: 0.2,
+      |         period: 500
+      |       }
+      |     }
+      |   },
+      |   createRenderables: {
+      |     background: true,
+      |     selectedItemOverlay: true
+      |   },
+      |   tabBarRender: function() {
+      |     var fview = FView.from(this);    
+      |     this.autorun(function(c) {
+      |       FlowRouter.setParams({ tab: fview.selectedTab() });
+      |     });
+      |   }
+      | });
+    +markdown
+      | **In Template TabBar Component**:
+      | 1. `selectedTab` attribute - sets the current tab from a reactive helper
+      | 1. `_onRender` new/experimental shortuct in famous-views 0.1.33
+      | 1. Every child has a `tabId` or `id` to name it.  Without it, we use indexes (0, 1, 2, etc)
+      | 
+      | **In Code/Helpers**:
+      | 1. `tabBarRender` "helper" to change route on tab change
+      | 1. `selectedTab()` method - reactively returns the current tab
+      | 1. `selectedTab(value)` method - sets the current tab (not used in example)
+      | 
+      | ## TabBar Component
+      | 
+      | * **[Full docs](https://github.com/IjzerenHein/famous-flex/blob/master/docs/widgets/TabBar.md)**
+      | * [Upstream demo](https://rawgit.com/IjzerenHein/famous-flex-tabbar/master/dist/index.html)
+      | and [source](https://github.com/IjzerenHein/famous-flex-tabbar)
+      | * Also available via JS: `Flex.TabBar`, `Flex.TabBarLayout`, `Flex.TabBarController`

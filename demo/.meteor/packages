@@ -14,5 +14,9 @@ raix:famono
 gadicohen:famous-views
 gadicohen:fview-flex
 
-mquandalle:jade
+mquandalle:jade@=0.2.9
 meteorhacks:flow-router
+
+gadicohen:snippets
+chuangbo:marked@=0.3.2_4
+

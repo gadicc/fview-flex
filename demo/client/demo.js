@@ -8,7 +8,7 @@ FlowRouter.route('/', {
   action: function() {
     FlowRouter.go('/FlexScrollView');
   }
-})
+});
 
 //var getSession = function(sessionVar) { return Session.get('direction') }
 
@@ -17,7 +17,7 @@ Template.registerHelper('dstache', function() {
 });
 
 Template.body.helpers({
-  showId: function() {
+  currentRouteName: function() {
     return FlowRouter.getRouteName();
   },
   layoutController: {
@@ -31,16 +31,31 @@ Template.body.helpers({
   createRenderables: {
     background: true,
     selectedItemOverlay: true
+  },
+  tabBarRender: function() {
+    var fview = FView.from(this);    
+    this.autorun(function(c) {
+      FlowRouter.go(fview.selectedTab());
+    });
   }
 });
 
+/*
 Template.TabBarInitHack.onRendered(function() {
   // Since we're a non-fview template, the fview we get here is our parent's
   var fview = FView.from(this);
 
-  this.autorun(function() {
-    var tabId = fview.index(); // only reactive dep
-    if (tabId && tabId !== FlowRouter.current().route.name /* non-reactive */)
+  this.autorun(function(c) {
+    // only reactive dep
+    var tabId = fview.selectedTab();
+
+    // give precendence to route, not initial tab index
+    if (c.firstRun)
+      return;
+
+    console.log(tabId, FlowRouter.current().route.name);
+    if (tabId && tabId !== FlowRouter.current().route.name /* non-reactive *//*)
       FlowRouter.go(tabId);
   });
 });
+*/

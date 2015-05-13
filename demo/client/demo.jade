@@ -4,11 +4,10 @@ head
 body
   +famousContext id="mainCtx"
     +HeaderFooterLayout headerSize=45
-      +TabBar target="header" class="black" createRenderables=createRenderables layoutController=layoutController
+      +TabBar target="header" selectedTab=currentRouteName _onRender="tabBarRender" class="black" createRenderables=createRenderables layoutController=layoutController
         +tabHeader tabId="FlexScrollViewDemo" text="FlexScrollView"
         +tabHeader tabId="TabBarDemo" text="TabBar"
-        +TabBarInitHack
-      +RenderController target="content" prerender=true showId=showId
+      +RenderController target="content" prerender=true showId=currentRouteName
         +FlexScrollViewDemo
         +TabBarDemo
 

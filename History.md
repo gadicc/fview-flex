@@ -1,5 +1,10 @@
 ## vNEXT
 
+## v0.0.8
+
+* TabBar: `fview.index()` -> `fview.selectedTab()`, and `fview.selectedTab(valueToSet)`
+* TabBar: `selectedTab` attribute in template declaration, from a reactive helper
+
 ## v0.0.7
 
 * Update to latest famous-flex, famous-autosizetextarea, famous-refresh-loader

@@ -12,3 +12,8 @@
   font-family: verdana;
   line-height: 1.65em;
 }
+
+.padded {
+  padding: 15px;
+  overflow: auto;
+}
