@@ -44,16 +44,10 @@ template(name="TabBarDemo")
       |     return FlowRouter.getParam('tabId');
       |   },
       |   layoutController: {
-      |    flowOptions: {
-      |       spring: {
-      |         dampingRatio: 0.2,
-      |         period: 500
-      |       }
-      |     }
+      |    flowOptions: { spring: { dampingRatio: 0.2, period: 500 } }
       |   },
       |   createRenderables: {
-      |     background: true,
-      |     selectedItemOverlay: true
+      |     background: true, selectedItemOverlay: true
       |   },
       |   tabBarRender: function() {
       |     var fview = FView.from(this);    
