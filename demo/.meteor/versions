@@ -14,8 +14,8 @@ ddp@1.1.0
 deps@1.0.7
 ejson@1.0.6
 fastclick@1.0.3
-gadicohen:famous-views@0.1.33-pre.4
-gadicohen:fview-flex@0.0.8
+gadicohen:famous-views@0.2.0
+gadicohen:fview-flex@0.0.9
 gadicohen:prism@1.0.4
 gadicohen:snippets@0.0.5
 geojson-utils@1.0.3
