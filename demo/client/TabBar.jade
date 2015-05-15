@@ -14,7 +14,7 @@ template(name="TabBarDemo")
       |     {{dstache}}/TabBar}}
       |     {{dstache}}#RenderController prerender=true showId=fromRouteParam}}
       |       {{dstache}}>Surface id="tab1" template="surface1"}}
-      |       {{dstache}}>Surface id="tab2" template="surface1"}}
+      |       {{dstache}}>Surface id="tab2" template="surface2"}}
       |     {{dstache}}/RenderController}}
       |    {{dstache}}/SequentialLayout}}
       | &lt;/template>
@@ -32,8 +32,8 @@ template(name="TabBarDemo")
         |       +tabHeader tabId="tab1" text="Tab 1"
         |       +tabHeader tabId="tab2" text="Tab 2"
         |     +RenderController prerender=true showId=fromRouteParam
-        |       +Surface id="tab1" text="Tab 1"
-        |       +Surface id="tab2" text="Tab 2"
+        |       +Surface id="tab1" template="surface1"
+        |       +Surface id="tab2" template="surface2"
         | 
         | template(name="tabHeader")
         |   +Surface tabId=tabId class="ff-widget ff-tabbar images item black tabHeader"
